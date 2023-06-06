@@ -196,7 +196,7 @@ export default function IndexPage() {
                       <div className="mb-2 flex items-center gap-2">
                         <div className="flex items-center gap-2">
                           <h3
-                            className="gradient-text-brand-500 dark:gradient-text-brand-100 text-2xl font-semibold
+                            className="gradient-text-brand-500 dark:gradient-text-brand-100 text-2xl font-normal
                            uppercase flex items-center gap-4 font-mono"
                           >
                             {plan.name}
@@ -307,7 +307,7 @@ export default function IndexPage() {
             <div className="flex flex-col justify-center lg:px-8">
               <div>
                 <h3
-                  className="gradient-text-brand-500 dark:gradient-text-brand-100 text-2xl font-semibold
+                  className="gradient-text-brand-500 dark:gradient-text-brand-100 text-2xl font-normal
                            uppercase flex items-center gap-4 font-mono"
                 >
                   {planEnterprise.name}
@@ -732,7 +732,7 @@ export default function IndexPage() {
                         scope="col"
                         key={plan.name}
                       >
-                        <h3 className="gradient-text-brand-500 dark:gradient-text-brand-100 text-2xl font-mono font-semibold uppercase flex items-center gap-4">
+                        <h3 className="gradient-text-brand-500 dark:gradient-text-brand-100 text-2xl font-mono font-normal uppercase flex items-center gap-4">
                           {plan.name}
                         </h3>
                         <div
