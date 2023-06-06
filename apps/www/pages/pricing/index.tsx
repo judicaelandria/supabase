@@ -321,7 +321,7 @@ export default function IndexPage() {
                 </p>
 
                 <a href={planEnterprise.href} className="hidden lg:block">
-                  <Button type="primary" size="small">
+                  <Button type="default" size="small">
                     {planEnterprise.cta}
                   </Button>
                 </a>
@@ -343,7 +343,7 @@ export default function IndexPage() {
               </ul>
 
               <a href={planEnterprise.href} className="visible lg:hidden mt-8">
-                <Button block type="primary" size="small">
+                <Button block type="default" size="small">
                   {planEnterprise.cta}
                 </Button>
               </a>
@@ -908,7 +908,7 @@ export default function IndexPage() {
                     <td className="px-6 pt-5">
                       <Link href="https://forms.supabase.com/enterprise">
                         <a>
-                          <Button size="tiny" type="primary" block>
+                          <Button size="tiny" type="default" block>
                             Contact us
                           </Button>
                         </a>
