@@ -732,7 +732,7 @@ export default function IndexPage() {
                         scope="col"
                         key={plan.name}
                       >
-                        <h3 className="gradient-text-brand-500 dark:gradient-text-brand-100 text-2xl font-mono font-normal uppercase flex items-center gap-4">
+                        <h3 className="gradient-text-brand-500 dark:gradient-text-brand-100 text-2xl font-mono font-semibold uppercase flex items-center gap-4">
                           {plan.name}
                         </h3>
                         <div
