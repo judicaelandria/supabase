@@ -302,9 +302,9 @@ export default function IndexPage() {
           </div>
         </div>
 
-        <div className="mx-auto">
-          <div className="max-w-md lg:max-w-6xl grid lg:grid-cols-2 mx-auto border bg-scale-100 rounded-md px-8 lg:px-16 py-6 mt-8 gap-x-16">
-            <div className="flex flex-col justify-center">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-md lg:max-w-6xl grid grid-cols-1 lg:grid-cols-5 mx-auto border bg-scale-100 rounded-md px-8 py-6 mt-8 gap-x-16">
+            <div className="flex flex-col justify-center lg:col-span-2">
               <div>
                 <h3
                   className="gradient-text-brand-500 dark:gradient-text-brand-100 text-2xl font-normal
@@ -312,19 +312,19 @@ export default function IndexPage() {
                 >
                   {planEnterprise.name}
                 </h3>
-                <p className="text-scale-1100 my-4 text-sm pb-4 2xl:pr-4">
+                <p className="text-scale-1100 my-4 text-sm pb-2 2xl:pr-4">
                   {planEnterprise.description}
                 </p>
 
-                <a href={planEnterprise.href} className="hidden lg:visible">
+                <a href={planEnterprise.href} className="hidden lg:block">
                   <Button type="default" size="small">
                     {planEnterprise.cta}
                   </Button>
                 </a>
               </div>
             </div>
-            <div className="flex flex-col justify-center">
-              <ul role="list" className="text-xs text-scale-1000">
+            <div className="flex flex-col justify-center lg:col-span-3">
+              <ul role="list" className="text-xs text-scale-1000 lg:grid lg:grid-cols-2 lg:gap-x-8">
                 {planEnterprise.features.map((feature) => (
                   <li key={feature} className="flex items-center py-2 first:mt-0">
                     <IconCheck
