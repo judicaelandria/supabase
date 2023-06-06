@@ -232,21 +232,25 @@ export default function IndexPage() {
                               <p className="text-scale-900 ml-1 text-xs font-normal">
                                 {plan.priceLabel}
                               </p>
-                              <p
-                                className={`mt-2 gradient-text-scale-500 dark:gradient-text-scale-100 pb-1 ${
-                                  plan.name !== 'Enterprise' ? 'text-5xl' : 'text-4xl'
-                                }`}
-                              >
-                                {plan.name !== 'Enterprise' && '$'}
-                                {plan.priceMonthly}
-                              </p>
-                              {plan.costUnit && (
-                                <p className="text-scale-900 mt-0.5 text-xs">{plan.costUnit}</p>
-                              )}
+                              <div className="flex items-end">
+                                <p
+                                  className={`mt-2 gradient-text-scale-500 dark:gradient-text-scale-100 pb-1 ${
+                                    plan.name !== 'Enterprise' ? 'text-5xl' : 'text-4xl'
+                                  }`}
+                                >
+                                  {plan.name !== 'Enterprise' && '$'}
+                                  {plan.priceMonthly}
+                                </p>
+                                {plan.costUnit && (
+                                  <p className="text-scale-900 mb-1.5 ml-1 text-xs">
+                                    {plan.costUnit}
+                                  </p>
+                                )}
+                              </div>
 
                               {plan.warning && (
                                 <p className="-mt-2">
-                                  <span className="bg-scale-200 text-brand-1100 rounded-md bg-opacity-30 py-0.5 px-2 text-xs ">
+                                  <span className="bg-scale-200 text-brand-1100 rounded-md bg-opacity-30 py-0.5 px-2 text-xs">
                                     {plan.warning}
                                   </span>
                                 </p>
@@ -793,7 +797,7 @@ export default function IndexPage() {
 
                             {plan.warning && (
                               <p className="-mt-2">
-                                <span className="bg-brand-500 text-brand-1100 rounded-md bg-opacity-30 py-0.5 px-2 text-xs !border !border-brand-900">
+                                <span className="bg-scale-100 text-brand-1100 rounded-md bg-opacity-30 py-0.5 px-2 text-xs">
                                   {plan.warning}
                                 </span>
                               </p>

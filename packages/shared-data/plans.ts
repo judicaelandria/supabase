@@ -2,7 +2,7 @@ export const plans = [
   {
     name: 'Free',
     nameBadge: '',
-    costUnit: 'per month',
+    costUnit: '/ month',
     href: 'https://supabase.com/dashboard/new/new-project',
     priceLabel: 'Starting from',
     priceMonthly: 0,
@@ -28,7 +28,7 @@ export const plans = [
   {
     name: 'Pro',
     nameBadge: '',
-    costUnit: 'per month',
+    costUnit: '/ month',
     href: 'https://supabase.com/dashboard/new/new-project',
     from: true,
     priceLabel: 'Starting from',
@@ -57,7 +57,7 @@ export const plans = [
   {
     name: 'Team',
     nameBadge: 'New',
-    costUnit: 'per month',
+    costUnit: '/ month',
     href: 'https://forms.supabase.com/team',
     from: true,
     priceLabel: 'Starting from',
