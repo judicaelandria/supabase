@@ -12,21 +12,21 @@ import pricing from 'shared-data/Pricing.json'
 import pricingFaq from '~/data/PricingFAQ.json'
 import { useTheme } from 'common/Providers'
 import ComputePricingModal from '~/components/Pricing/ComputePricingModal'
-import { tiers } from 'shared-data/tiers'
+import { plans } from 'shared-data/plans'
 
 export default function IndexPage() {
   const router = useRouter()
   const { basePath, asPath } = useRouter()
   const { isDarkMode } = useTheme()
   const [showComputeModal, setShowComputeModal] = useState(false)
-  const [activeMobileTier, setActiveMobileTier] = useState('Free')
+  const [activeMobilePlan, setActiveMobilePlan] = useState('Free')
 
   const meta_title = 'Pricing & fees | Supabase'
   const meta_description =
-    'Explore Supabase fees and pricing information. Find our competitive pricing tiers, with no hidden pricing. We have a generous free plan for those getting started, and Pay As You Go for those scaling up.'
+    'Explore Supabase fees and pricing information. Find our competitive pricing plans, with no hidden pricing. We have a generous free plan for those getting started, and Pay As You Go for those scaling up.'
 
-  const tiersExceptEnterprise = tiers.filter((it) => it.name !== 'Enterprise')
-  const tierEnterprise = tiers.find((it) => it.name === 'Enterprise')!
+  const plansExceptEnterprise = plans.filter((it) => it.name !== 'Enterprise')
+  const planEnterprise = plans.find((it) => it.name === 'Enterprise')!
 
   // Ability to scroll into pricing sections like storage
   useEffect(() => {
@@ -91,21 +91,21 @@ export default function IndexPage() {
     description,
     priceDescription,
     price,
-    tier,
+    plan,
     showDollarSign = true,
     from = false,
   }: {
     description: string
     priceDescription: string
     price: string
-    tier: string
+    plan: string
     showDollarSign?: boolean
     from?: boolean
   }) => {
     return (
       <div className="mt-8 px-4 mobile-header">
         <h2 className="gradient-text-brand-500 dark:gradient-text-brand-100 text-3xl font-medium uppercase font-mono">
-          {tier}
+          {plan}
         </h2>
         <div className="flex items-baseline gap-2">
           {from && <span className="text-scale-1200 text-base">From</span>}
@@ -169,28 +169,28 @@ export default function IndexPage() {
           "
           >
             <div className="mx-auto max-w-md grid lg:max-w-6xl lg:grid-cols-3 gap-24 lg:gap-5">
-              {tiersExceptEnterprise.map((tier) => (
+              {plansExceptEnterprise.map((plan) => (
                 <div
-                  key={`row-${tier.name}`}
+                  key={`row-${plan.name}`}
                   className={[
-                    tier.name === 'Pro'
+                    plan.name === 'Pro'
                       ? 'bg-brand-1100 dark:bg-brand-900 border px-0.5 -mt-8 rounded-[6px]'
                       : '',
                   ].join(' ')}
                 >
-                  {tier.name === 'Pro' && (
+                  {plan.name === 'Pro' && (
                     <p className="text-xs text-center py-2 text-white">Most Popular</p>
                   )}
                   <div
-                    key={tier.name}
+                    key={plan.name}
                     className={[
                       'flex flex-col overflow-hidden',
-                      tier.name === 'Pro' ? '' : 'border h-full rounded-[4px]',
+                      plan.name === 'Pro' ? '' : 'border h-full rounded-[4px]',
                     ].join(' ')}
                   >
                     <div
                       className={`dark:bg-scale-300 bg-white px-8 pt-6 rounded-tr-[4px] rounded-tl-[4px] ${
-                        tier.name === 'Pro' ? 'rounded-tr-[4px] rounded-tl-[4px]' : ''
+                        plan.name === 'Pro' ? 'rounded-tr-[4px] rounded-tl-[4px]' : ''
                       }`}
                     >
                       <div className="mb-2 flex items-center gap-2">
@@ -199,17 +199,17 @@ export default function IndexPage() {
                             className="gradient-text-brand-500 dark:gradient-text-brand-100 text-2xl font-normal
                            uppercase flex items-center gap-4 font-mono"
                           >
-                            {tier.name}
+                            {plan.name}
                           </h3>
-                          {tier.nameBadge && (
+                          {plan.nameBadge && (
                             <span className="bg-scale-300 text-scale-900 dark:bg-scale-400 dark:text-scale-1100 rounded-md bg-opacity-10 py-0.5 px-2 text-xs [background-image: none]">
-                              {tier.nameBadge}
+                              {plan.nameBadge}
                             </span>
                           )}
                         </div>
                       </div>
                       <p className="text-scale-1100 my-4 text-sm  border-b dark:border-scale-500 pb-4 2xl:pr-4">
-                        {tier.description}
+                        {plan.description}
                       </p>
 
                       <div
@@ -230,24 +230,24 @@ export default function IndexPage() {
                           <div className="flex items-end gap-2">
                             <div>
                               <p className="text-scale-900 ml-1 text-xs font-normal">
-                                {tier.priceLabel}
+                                {plan.priceLabel}
                               </p>
                               <p
                                 className={`mt-2 gradient-text-scale-500 dark:gradient-text-scale-100 pb-1 ${
-                                  tier.name !== 'Enterprise' ? 'text-5xl' : 'text-4xl'
+                                  plan.name !== 'Enterprise' ? 'text-5xl' : 'text-4xl'
                                 }`}
                               >
-                                {tier.name !== 'Enterprise' && '$'}
-                                {tier.priceMonthly}
+                                {plan.name !== 'Enterprise' && '$'}
+                                {plan.priceMonthly}
                               </p>
-                              {tier.costUnit && (
-                                <p className="text-scale-900 mt-0.5 text-xs">{tier.costUnit}</p>
+                              {plan.costUnit && (
+                                <p className="text-scale-900 mt-0.5 text-xs">{plan.costUnit}</p>
                               )}
 
-                              {tier.warning && (
+                              {plan.warning && (
                                 <p className="-mt-2">
                                   <span className="bg-brand-500 text-brand-1100 rounded-md bg-opacity-30 py-0.5 px-2 text-xs ">
-                                    {tier.warning}
+                                    {plan.warning}
                                   </span>
                                 </p>
                               )}
@@ -259,15 +259,15 @@ export default function IndexPage() {
                     <div
                       className={[
                         `dark:border-scale-400 dark:bg-scale-300 flex h-full rounded-bl-[4px] rounded-br-[4px] flex-1 flex-col bg-white px-8 py-6`,
-                        tier.name === 'Pro' ? 'mb-0.5 rounded-bl-[4px] rounded-br-[4px]' : '',
+                        plan.name === 'Pro' ? 'mb-0.5 rounded-bl-[4px] rounded-br-[4px]' : '',
                       ].join(' ')}
                     >
-                      {tier.preface && (
-                        <p className="text-scale-1100 text-xs mt-2 mb-4">{tier.preface}</p>
+                      {plan.preface && (
+                        <p className="text-scale-1100 text-xs mt-2 mb-4">{plan.preface}</p>
                       )}
                       {/* <p className="text-scale-900 text-sm">Included with plan:</p> */}
                       <ul role="list" className="text-xs text-scale-1000">
-                        {tier.features.map((feature) => (
+                        {plan.features.map((feature) => (
                           <li key={feature} className="flex items-center py-2 first:mt-0">
                             <IconCheck
                               className="text-brand-900 h-4 w-4 "
@@ -282,15 +282,15 @@ export default function IndexPage() {
 
                       <div className="flex flex-col gap-6 mt-auto prose">
                         <div className="space-y-2 mt-12">
-                          {tier.additional && <p className="text-sm">{tier.additional}</p>}
-                          {tier.scale && <p className="text-xs">{tier.scale}</p>}
-                          {tier.shutdown && (
-                            <p className="text-scale-1000 text-xs">{tier.shutdown}</p>
+                          {plan.additional && <p className="text-sm">{plan.additional}</p>}
+                          {plan.scale && <p className="text-xs">{plan.scale}</p>}
+                          {plan.shutdown && (
+                            <p className="text-scale-1000 text-xs">{plan.shutdown}</p>
                           )}
                         </div>
-                        <a href={tier.href}>
+                        <a href={plan.href}>
                           <Button block size="small">
-                            {tier.cta}
+                            {plan.cta}
                           </Button>
                         </a>
                       </div>
@@ -310,22 +310,22 @@ export default function IndexPage() {
                   className="gradient-text-brand-500 dark:gradient-text-brand-100 text-2xl font-normal
                            uppercase flex items-center gap-4 font-mono"
                 >
-                  {tierEnterprise.name}
+                  {planEnterprise.name}
                 </h3>
                 <p className="text-scale-1100 my-4 text-sm pb-4 2xl:pr-4">
-                  {tierEnterprise.description}
+                  {planEnterprise.description}
                 </p>
 
-                <a href={tierEnterprise.href} className="hidden lg:visible">
+                <a href={planEnterprise.href} className="hidden lg:visible">
                   <Button type="default" size="small">
-                    {tierEnterprise.cta}
+                    {planEnterprise.cta}
                   </Button>
                 </a>
               </div>
             </div>
             <div className="flex flex-col justify-center">
               <ul role="list" className="text-xs text-scale-1000">
-                {tierEnterprise.features.map((feature) => (
+                {planEnterprise.features.map((feature) => (
                   <li key={feature} className="flex items-center py-2 first:mt-0">
                     <IconCheck
                       className="text-brand-900 h-4 w-4 "
@@ -338,9 +338,9 @@ export default function IndexPage() {
                 ))}
               </ul>
 
-              <a href={tierEnterprise.href} className="visible lg:hidden  mt-4">
+              <a href={planEnterprise.href} className="visible lg:hidden  mt-4">
                 <Button block type="default" size="small">
-                  {tierEnterprise.cta}
+                  {planEnterprise.cta}
                 </Button>
               </a>
             </div>
@@ -480,9 +480,9 @@ export default function IndexPage() {
                     id="change-plan"
                     name="Change plan"
                     layout="vertical"
-                    value={activeMobileTier}
+                    value={activeMobilePlan}
                     className="min-w-[120px] bg-slate-400 text-red-500"
-                    onChange={(e) => setActiveMobileTier(e.target.value)}
+                    onChange={(e) => setActiveMobilePlan(e.target.value)}
                   >
                     <Select.Option value="Free">Free</Select.Option>
                     <Select.Option value="Pro">Pro</Select.Option>
@@ -491,69 +491,69 @@ export default function IndexPage() {
                   </Select>
                 </div>
               </div>
-              {activeMobileTier === 'Free' && (
+              {activeMobilePlan === 'Free' && (
                 <>
                   <MobileHeader
-                    tier="Free"
+                    plan="Free"
                     price={'0'}
                     priceDescription={'/mo'}
                     description={'Perfect for hobby projects and experiments'}
                   />
                   <PricingTableRowMobile
                     category={pricing.database}
-                    tier={'free'}
+                    plan={'free'}
                     icon={Solutions['database'].icon}
                     sectionId="database"
                   />
                   <PricingTableRowMobile
                     category={pricing.auth}
-                    tier={'free'}
+                    plan={'free'}
                     icon={Solutions['authentication'].icon}
                     sectionId="auth"
                   />
                   <PricingTableRowMobile
                     category={pricing.storage}
-                    tier={'free'}
+                    plan={'free'}
                     icon={Solutions['storage'].icon}
                     sectionId="storage"
                   />
                   <PricingTableRowMobile
                     category={pricing.realtime}
-                    tier={'free'}
+                    plan={'free'}
                     icon={Solutions['realtime'].icon}
                     sectionId="realtime"
                   />
                   <PricingTableRowMobile
                     category={pricing['edge-functions']}
-                    tier={'free'}
+                    plan={'free'}
                     icon={Solutions['edge-functions'].icon}
                     sectionId="edge-functions"
                   />
                   <PricingTableRowMobile
                     category={pricing.dashboard}
-                    tier={'free'}
+                    plan={'free'}
                     icon={pricing.dashboard.icon}
                     sectionId="dashboard"
                   />
                   <PricingTableRowMobile
                     category={pricing.security}
-                    tier={'free'}
+                    plan={'free'}
                     icon={pricing.security.icon}
                     sectionId="security"
                   />
                   <PricingTableRowMobile
                     category={pricing.support}
-                    tier={'free'}
+                    plan={'free'}
                     icon={pricing.support.icon}
                     sectionId="support"
                   />
                 </>
               )}
 
-              {activeMobileTier === 'Pro' && (
+              {activeMobilePlan === 'Pro' && (
                 <>
                   <MobileHeader
-                    tier="Pro"
+                    plan="Pro"
                     from={false}
                     price={'25'}
                     priceDescription={'/mo + additional use'}
@@ -561,51 +561,51 @@ export default function IndexPage() {
                   />
                   <PricingTableRowMobile
                     category={pricing.database}
-                    tier={'pro'}
+                    plan={'pro'}
                     icon={Solutions['database'].icon}
                   />
                   <PricingTableRowMobile
                     category={pricing.auth}
-                    tier={'pro'}
+                    plan={'pro'}
                     icon={Solutions['authentication'].icon}
                   />
                   <PricingTableRowMobile
                     category={pricing.storage}
-                    tier={'pro'}
+                    plan={'pro'}
                     icon={Solutions['storage'].icon}
                   />
                   <PricingTableRowMobile
                     category={pricing.realtime}
-                    tier={'pro'}
+                    plan={'pro'}
                     icon={Solutions['realtime'].icon}
                   />
                   <PricingTableRowMobile
                     category={pricing['edge-functions']}
-                    tier={'pro'}
+                    plan={'pro'}
                     icon={Solutions['edge-functions'].icon}
                   />
                   <PricingTableRowMobile
                     category={pricing.dashboard}
-                    tier={'pro'}
+                    plan={'pro'}
                     icon={pricing.dashboard.icon}
                   />
                   <PricingTableRowMobile
                     category={pricing.security}
-                    tier={'pro'}
+                    plan={'pro'}
                     icon={pricing.security.icon}
                   />
                   <PricingTableRowMobile
                     category={pricing.support}
-                    tier={'pro'}
+                    plan={'pro'}
                     icon={pricing.support.icon}
                   />
                 </>
               )}
 
-              {activeMobileTier === 'Team' && (
+              {activeMobilePlan === 'Team' && (
                 <>
                   <MobileHeader
-                    tier="Team"
+                    plan="Team"
                     from={false}
                     price={'599'}
                     priceDescription={'/mo + additional use'}
@@ -613,51 +613,51 @@ export default function IndexPage() {
                   />
                   <PricingTableRowMobile
                     category={pricing.database}
-                    tier={'team'}
+                    plan={'team'}
                     icon={Solutions['database'].icon}
                   />
                   <PricingTableRowMobile
                     category={pricing.auth}
-                    tier={'team'}
+                    plan={'team'}
                     icon={Solutions['authentication'].icon}
                   />
                   <PricingTableRowMobile
                     category={pricing.storage}
-                    tier={'team'}
+                    plan={'team'}
                     icon={Solutions['storage'].icon}
                   />
                   <PricingTableRowMobile
                     category={pricing.realtime}
-                    tier={'team'}
+                    plan={'team'}
                     icon={Solutions['realtime'].icon}
                   />
                   <PricingTableRowMobile
                     category={pricing['edge-functions']}
-                    tier={'team'}
+                    plan={'team'}
                     icon={Solutions['edge-functions'].icon}
                   />
                   <PricingTableRowMobile
                     category={pricing.dashboard}
-                    tier={'team'}
+                    plan={'team'}
                     icon={pricing.dashboard.icon}
                   />
                   <PricingTableRowMobile
                     category={pricing.security}
-                    tier={'team'}
+                    plan={'team'}
                     icon={pricing.security.icon}
                   />
                   <PricingTableRowMobile
                     category={pricing.support}
-                    tier={'team'}
+                    plan={'team'}
                     icon={pricing.support.icon}
                   />
                 </>
               )}
 
-              {activeMobileTier === 'Enterprise' && (
+              {activeMobilePlan === 'Enterprise' && (
                 <>
                   <MobileHeader
-                    tier="Enterprise"
+                    plan="Enterprise"
                     price={'Contact us for a quote'}
                     priceDescription={''}
                     description={
@@ -667,42 +667,42 @@ export default function IndexPage() {
                   />
                   <PricingTableRowMobile
                     category={pricing.database}
-                    tier={'enterprise'}
+                    plan={'enterprise'}
                     icon={Solutions['database'].icon}
                   />
                   <PricingTableRowMobile
                     category={pricing.auth}
-                    tier={'enterprise'}
+                    plan={'enterprise'}
                     icon={Solutions['authentication'].icon}
                   />
                   <PricingTableRowMobile
                     category={pricing.storage}
-                    tier={'enterprise'}
+                    plan={'enterprise'}
                     icon={Solutions['storage'].icon}
                   />
                   <PricingTableRowMobile
                     category={pricing.realtime}
-                    tier={'enterprise'}
+                    plan={'enterprise'}
                     icon={Solutions['realtime'].icon}
                   />
                   <PricingTableRowMobile
                     category={pricing['edge-functions']}
-                    tier={'enterprise'}
+                    plan={'enterprise'}
                     icon={Solutions['edge-functions'].icon}
                   />
                   <PricingTableRowMobile
                     category={pricing.dashboard}
-                    tier={'enterprise'}
+                    plan={'enterprise'}
                     icon={pricing.dashboard.icon}
                   />
                   <PricingTableRowMobile
                     category={pricing.security}
-                    tier={'enterprise'}
+                    plan={'enterprise'}
                     icon={pricing.security.icon}
                   />
                   <PricingTableRowMobile
                     category={pricing.support}
-                    tier={'enterprise'}
+                    plan={'enterprise'}
                     icon={pricing.support.icon}
                   />
                 </>
@@ -726,14 +726,14 @@ export default function IndexPage() {
                       ></div>
                     </th>
 
-                    {tiers.map((tier) => (
+                    {plans.map((plan) => (
                       <th
                         className="text-scale-1200 w-1/4 px-6 pr-2 pt-2 pb-2 text-left text-sm font-normal"
                         scope="col"
-                        key={tier.name}
+                        key={plan.name}
                       >
                         <h3 className="gradient-text-brand-500 dark:gradient-text-brand-100 text-2xl font-mono font-normal uppercase flex items-center gap-4">
-                          {tier.name}
+                          {plan.name}
                         </h3>
                         <div
                           className="h-0.25 absolute bottom-0 left-0 w-full"
@@ -749,13 +749,13 @@ export default function IndexPage() {
                     scope="col"
                   ></th>
 
-                  {tiers.map((tier) => (
+                  {plans.map((plan) => (
                     <th
                       className="text-scale-1200 w-1/4 px-6 pt-2 pb-2 text-left text-sm font-normal"
                       scope="col"
-                      key={`th-${tier.name}`}
+                      key={`th-${plan.name}`}
                     >
-                      <p className="p text-sm border-b border-scale-700 pb-4">{tier.description}</p>
+                      <p className="p text-sm border-b border-scale-700 pb-4">{plan.description}</p>
                       <div
                         className="h-0.25 absolute bottom-0 left-0 w-full"
                         style={{ height: '1px' }}
@@ -770,44 +770,44 @@ export default function IndexPage() {
                       scope="row"
                     ></th>
 
-                    {tiers.map((tier) => (
-                      <td className="h-full px-6 py-2 align-top" key={`price-${tier.name}`}>
+                    {plans.map((plan) => (
+                      <td className="h-full px-6 py-2 align-top" key={`price-${plan.name}`}>
                         <div className="relative table h-full w-full">
                           <div className="flex flex-col justify-between h-full">
                             <>
                               <span
                                 className={`text-scale-1200 ${
-                                  tier.name !== 'Enterprise' ? 'text-5xl' : 'text-4xl'
+                                  plan.name !== 'Enterprise' ? 'text-5xl' : 'text-4xl'
                                 }`}
                               >
-                                {tier.name !== 'Enterprise' && '$'}
-                                {tier.priceMonthly}
+                                {plan.name !== 'Enterprise' && '$'}
+                                {plan.priceMonthly}
                               </span>
-                              {['Pro', 'Free'].includes(tier.name) && (
+                              {['Pro', 'Free'].includes(plan.name) && (
                                 <p className="p text-xs mt-1">per month</p>
                               )}
-                              {['Team'].includes(tier.name) && (
+                              {['Team'].includes(plan.name) && (
                                 <p className="p text-xs mt-1">per month</p>
                               )}
                             </>
 
-                            {tier.warning && (
+                            {plan.warning && (
                               <p className="-mt-2">
                                 <span className="bg-brand-500 text-brand-1100 rounded-md bg-opacity-30 py-0.5 px-2 text-xs ">
-                                  {tier.warning}
+                                  {plan.warning}
                                 </span>
                               </p>
                             )}
 
-                            <div className={tier.name === 'Enterprise' ? 'mt-auto' : 'mt-8'}>
-                              <Link href={tier.href} as={tier.href}>
+                            <div className={plan.name === 'Enterprise' ? 'mt-auto' : 'mt-8'}>
+                              <Link href={plan.href} as={plan.href}>
                                 <a>
                                   <Button
                                     size="tiny"
-                                    type={tier.name === 'Enterprise' ? 'default' : 'primary'}
+                                    type={plan.name === 'Enterprise' ? 'default' : 'primary'}
                                     block
                                   >
-                                    {tier.cta}
+                                    {plan.cta}
                                   </Button>
                                 </a>
                               </Link>

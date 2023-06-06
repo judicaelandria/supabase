@@ -1,4 +1,4 @@
-export const tiers = [
+export const plans = [
   {
     name: 'Free',
     nameBadge: '',
