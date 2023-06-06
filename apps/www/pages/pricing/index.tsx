@@ -196,13 +196,13 @@ export default function IndexPage() {
                       <div className="mb-2 flex items-center gap-2">
                         <div className="flex items-center gap-2">
                           <h3
-                            className="gradient-text-brand-500 dark:gradient-text-brand-100 text-2xl font-normal
+                            className="gradient-text-brand-500 dark:gradient-text-brand-100 text-2xl font-semibold
                            uppercase flex items-center gap-4 font-mono"
                           >
                             {plan.name}
                           </h3>
                           {plan.nameBadge && (
-                            <span className="bg-scale-300 text-scale-900 dark:bg-scale-400 dark:text-scale-1100 rounded-md bg-opacity-10 py-0.5 px-2 text-xs [background-image: none]">
+                            <span className="bg-brand-500 text-brand-1100 rounded-md bg-opacity-30 py-0.5 px-2 text-xs">
                               {plan.nameBadge}
                             </span>
                           )}
@@ -246,7 +246,7 @@ export default function IndexPage() {
 
                               {plan.warning && (
                                 <p className="-mt-2">
-                                  <span className="bg-brand-500 text-brand-1100 rounded-md bg-opacity-30 py-0.5 px-2 text-xs ">
+                                  <span className="bg-scale-200 text-brand-1100 rounded-md bg-opacity-30 py-0.5 px-2 text-xs ">
                                     {plan.warning}
                                   </span>
                                 </p>
@@ -303,11 +303,11 @@ export default function IndexPage() {
         </div>
 
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-md lg:max-w-6xl grid grid-cols-1 lg:grid-cols-5 mx-auto border bg-scale-100 rounded-md px-8 py-6 mt-8 gap-x-16">
-            <div className="flex flex-col justify-center lg:col-span-2">
+          <div className="max-w-md lg:max-w-6xl grid grid-cols-1 lg:grid-cols-3 mx-auto border bg-scale-100 rounded-md p-8 lg:px-0 mt-8 gap-x-5">
+            <div className="flex flex-col justify-center lg:px-8">
               <div>
                 <h3
-                  className="gradient-text-brand-500 dark:gradient-text-brand-100 text-2xl font-normal
+                  className="gradient-text-brand-500 dark:gradient-text-brand-100 text-2xl font-semibold
                            uppercase flex items-center gap-4 font-mono"
                 >
                   {planEnterprise.name}
@@ -317,14 +317,14 @@ export default function IndexPage() {
                 </p>
 
                 <a href={planEnterprise.href} className="hidden lg:block">
-                  <Button type="default" size="small">
+                  <Button type="primary" size="small">
                     {planEnterprise.cta}
                   </Button>
                 </a>
               </div>
             </div>
-            <div className="flex flex-col justify-center lg:col-span-3">
-              <ul role="list" className="text-xs text-scale-1000 lg:grid lg:grid-cols-2 lg:gap-x-8">
+            <div className="flex flex-col justify-center lg:col-span-2">
+              <ul role="list" className="text-xs text-scale-1000 lg:grid lg:grid-cols-2 lg:gap-x-5">
                 {planEnterprise.features.map((feature) => (
                   <li key={feature} className="flex items-center py-2 first:mt-0">
                     <IconCheck
@@ -338,8 +338,8 @@ export default function IndexPage() {
                 ))}
               </ul>
 
-              <a href={planEnterprise.href} className="visible lg:hidden  mt-4">
-                <Button block type="default" size="small">
+              <a href={planEnterprise.href} className="visible lg:hidden mt-8">
+                <Button block type="primary" size="small">
                   {planEnterprise.cta}
                 </Button>
               </a>
@@ -793,7 +793,7 @@ export default function IndexPage() {
 
                             {plan.warning && (
                               <p className="-mt-2">
-                                <span className="bg-brand-500 text-brand-1100 rounded-md bg-opacity-30 py-0.5 px-2 text-xs ">
+                                <span className="bg-brand-500 text-brand-1100 rounded-md bg-opacity-30 py-0.5 px-2 text-xs !border !border-brand-900">
                                   {plan.warning}
                                 </span>
                               </p>

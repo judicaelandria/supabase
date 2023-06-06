@@ -56,7 +56,7 @@ export const plans = [
   },
   {
     name: 'Team',
-    nameBadge: '',
+    nameBadge: 'New',
     costUnit: 'per month',
     href: 'https://forms.supabase.com/team',
     from: true,
