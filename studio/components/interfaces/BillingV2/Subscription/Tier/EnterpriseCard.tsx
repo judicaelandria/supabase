@@ -33,7 +33,7 @@ const EnterpriseCard = ({ plan, isCurrentPlan }: EnterpriseCardProps) => {
         <p className="text-sm mt-2 mb-4">{plan.description}</p>
 
         <a href={plan.href} className="hidden md:block" target="_blank">
-          <Button block type="default" size="small">
+          <Button block type="default" size="tiny">
             {plan.cta}
           </Button>
         </a>
@@ -50,7 +50,7 @@ const EnterpriseCard = ({ plan, isCurrentPlan }: EnterpriseCardProps) => {
         </ul>
 
         <a href={plan.href} className="visible md:hidden mt-8" target="_blank">
-          <Button block type="default" size="small">
+          <Button block type="default" size="tiny">
             {plan.cta}
           </Button>
         </a>

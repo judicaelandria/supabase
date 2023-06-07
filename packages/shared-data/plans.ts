@@ -12,7 +12,6 @@ export interface PricingInformation {
   features: string[]
   footer?: string
   cta: string
-  scale?: string
 }
 
 export const plans: PricingInformation[] = [
@@ -69,7 +68,7 @@ export const plans: PricingInformation[] = [
       'Email support',
     ],
     footer:
-      'Your cost control settings determine if you wish to pay for anything more than the above.',
+      'Your cost control settings determine if you allow over-usage.',
     preface: 'Everything in the Free plan, plus:',
     cta: 'Get Started',
   },
@@ -92,7 +91,7 @@ export const plans: PricingInformation[] = [
       'Priority email support & SLAs',
       '28-day log retention',
     ],
-    scale: 'Additional fees apply for usage beyond included usage.',
+    footer: 'Additional fees apply for usage beyond included usage.',
     preface: 'Everything in the Pro plan, plus:',
     cta: 'Contact Us',
   },

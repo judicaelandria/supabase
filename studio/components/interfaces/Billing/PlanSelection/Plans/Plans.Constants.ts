@@ -35,7 +35,7 @@ export const PRICING_META = {
     description: 'For production applications with the option to scale.',
     priceMonthly: 25,
     priceUnit: '/ month',
-    warning: '+ any additional usage',
+    warning: 'Usage based plan',
     preface: 'Everything in the Free plan, plus:',
     features: [
       'No project pausing',
@@ -60,7 +60,7 @@ export const PRICING_META = {
     priceMonthly: 599,
     priceUnit: '/ month',
     warning: 'Usage based plan',
-    preface: 'The following features will apply to all projects within the organization:',
+    preface: 'Everything in the Pro plan, plus:',
     features: [
       'Additional Organization member roles',
       'Daily backups stored for 14 days',

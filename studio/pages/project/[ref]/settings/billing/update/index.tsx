@@ -115,7 +115,7 @@ const BillingUpdate: NextPageWithLayout = () => {
 
   return (
     <>
-      <div className={`mx-auto my-10 max-w-[90vw]`}>
+      <div className={`mx-auto my-10 max-w-[90vw] xl:max-w-[80vw]`}>
         <PlanSelection
           visible={!selectedPlan || (selectedPlan && showConfirmDowngrade)}
           tiers={productTiers}
