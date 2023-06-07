@@ -13,10 +13,6 @@ interface Props {
 }
 
 const PlanCard: FC<Props> = ({ plan, currentPlan, onSelectPlan }) => {
-  // Team tier is enabled when the flag is turned on OR the user is already on the team tier (manually assigned by us)
-  const teamTierEnabled =
-    useFlag('teamTier') || currentPlan?.supabase_prod_id === PRICING_TIER_PRODUCT_IDS.TEAM
-
   const planMeta = PRICING_META[plan.id]
   const isEnterprise = plan.id === 'Enterprise'
   const isCurrentPlan =
@@ -29,21 +25,21 @@ const PlanCard: FC<Props> = ({ plan, currentPlan, onSelectPlan }) => {
       className={[
         'px-6 py-6 border rounded flex flex-col justify-between',
         `${isEnterprise ? 'bg-scale-200' : 'bg-scale-300'}`,
-        `${isEnterprise && teamTierEnabled ? 'lg:col-span-3 xl:col-auto' : ''}`,
+        `${isEnterprise ? 'lg:col-span-3 xl:col-auto' : ''}`,
       ].join(' ')}
     >
       <div
         className={[
           'space-y-8',
           `${isEnterprise ? 'flex flex-col xl:space-x-0 xl:flex-col' : ''}`,
-          `${isEnterprise && teamTierEnabled ? 'lg:flex-row lg:space-x-24' : ''}`,
+          `${isEnterprise ? 'lg:flex-row lg:space-x-24' : ''}`,
         ].join(' ')}
       >
         <div
           className={[
             'space-y-4',
             `${isEnterprise ? 'xl:w-auto' : ''}`,
-            `${isEnterprise && teamTierEnabled ? 'xl:w-auto' : ''}`,
+            `${isEnterprise ? 'xl:w-auto' : ''}`,
           ].join(' ')}
         >
           <div className="flex items-center space-x-2">
@@ -98,7 +94,7 @@ const PlanCard: FC<Props> = ({ plan, currentPlan, onSelectPlan }) => {
             role="list"
             className={[
               `${isEnterprise ? 'xl:gap-0 xl:columns-1' : ''}`,
-              `${isEnterprise && teamTierEnabled ? 'lg:gap-16 lg:columns-2' : ''}`,
+              `${isEnterprise ? 'lg:gap-16 lg:columns-2' : ''}`,
             ].join(' ')}
           >
             {planMeta.features.map((feature) => (

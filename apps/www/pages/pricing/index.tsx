@@ -213,39 +213,36 @@ export default function IndexPage() {
                       </p>
 
                       <div
-                        className="
-                      text-scale-1200 flex items-baseline
-                      text-5xl
-                      font-normal
-                      lg:text-4xl
-                      xl:text-4xl
-                      border-b
-                      dark:border-scale-500
-                      pt-4
-                      pb-8
-                      min-h-[175px]
-                      "
+                        className={`
+                        text-scale-1200 flex items-baseline
+                        text-5xl
+                        font-normal
+                        lg:text-4xl
+                        xl:text-4xl
+                        border-b
+                        dark:border-scale-500
+                        min-h-[175px] ${plan.priceLabel ? 'pt-6' : 'pt-10'}`}
                       >
                         <div className="flex flex-col gap-1">
                           <div className="flex items-end gap-2">
                             <div>
-                              <p className="text-scale-900 ml-1 text-xs font-normal">
-                                {plan.priceLabel}
-                              </p>
+                              {plan.priceLabel && (
+                                <p className="text-scale-900 ml-1 text-xs font-normal">
+                                  {plan.priceLabel}
+                                </p>
+                              )}
+
                               <div className="flex items-end">
                                 <p
                                   className={`mt-2 gradient-text-scale-500 dark:gradient-text-scale-100 pb-1 ${
                                     plan.name !== 'Enterprise' ? 'text-5xl' : 'text-4xl'
                                   }`}
                                 >
-                                  {plan.name !== 'Enterprise' && '$'}
-                                  {plan.priceMonthly}
+                                  ${plan.priceMonthly}
                                 </p>
-                                {plan.costUnit && (
-                                  <p className="text-scale-900 mb-1.5 ml-1 text-xs">
-                                    {plan.costUnit}
-                                  </p>
-                                )}
+                                <p className="text-scale-900 mb-1.5 ml-1 text-xs">
+                                  {plan.costUnit}
+                                </p>
                               </div>
 
                               {plan.warning && (
@@ -274,7 +271,7 @@ export default function IndexPage() {
                         {plan.features.map((feature) => (
                           <li key={feature} className="flex items-center py-2 first:mt-0">
                             <IconCheck
-                              className="text-brand-900 h-4 w-4 "
+                              className="text-brand-900 h-4 w-4"
                               aria-hidden="true"
                               strokeWidth={3}
                             />
@@ -286,10 +283,8 @@ export default function IndexPage() {
 
                       <div className="flex flex-col gap-6 mt-auto prose">
                         <div className="space-y-2 mt-12">
-                          {plan.additional && <p className="text-sm">{plan.additional}</p>}
-                          {plan.scale && <p className="text-xs">{plan.scale}</p>}
-                          {plan.shutdown && (
-                            <p className="text-scale-1000 text-xs">{plan.shutdown}</p>
+                          {plan.footer && (
+                            <p className="text-xs whitespace-pre-wrap">{plan.footer}</p>
                           )}
                         </div>
                         <a href={plan.href}>
@@ -336,7 +331,6 @@ export default function IndexPage() {
                       aria-hidden="true"
                       strokeWidth={3}
                     />
-                    {/* </div> */}
                     <span className="dark:text-scale-1200 mb-0 ml-3 ">{feature}</span>
                   </li>
                 ))}

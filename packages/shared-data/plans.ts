@@ -1,85 +1,103 @@
-export const plans = [
+export interface PricingInformation {
+  id: string
+  name: string
+  nameBadge?: string
+  costUnit?: string
+  href: string
+  priceLabel?: string
+  priceMonthly: number | string
+  warning?: string
+  description: string
+  preface: string
+  features: string[]
+  footer?: string
+  cta: string
+  scale?: string
+}
+
+export const plans: PricingInformation[] = [
   {
+    id: 'tier_free',
     name: 'Free',
     nameBadge: '',
     costUnit: '/ month',
     href: 'https://supabase.com/dashboard/new/new-project',
-    priceLabel: 'Starting from',
+    priceLabel: '',
     priceMonthly: 0,
     warning: 'Limit of 2 free projects',
     description: 'Perfect for passion projects & simple websites.',
     preface: 'Get started with:',
     features: [
+      'Unlimited API requests',
       'Social OAuth providers',
-      'Up to 500MB database & 1GB file storage',
+      'Up to 500MB database space',
+      'Up to 1GB file storage',
       'Up to 2GB bandwidth',
       'Up to 50MB file uploads',
-      '50,000 monthly active users',
+      'Up to 50,000 monthly active users',
       'Up to 500K Edge Function invocations',
-      '200 concurrent Realtime connections',
-      '2 million Realtime messages',
+      'Up to 200 concurrent Realtime connections',
+      'Up to 2 million Realtime messages',
       '1-day log retention',
       'Community support',
     ],
-    scale: 'Free projects are paused after 1 week of inactivity.',
-
+    footer: 'Free projects are paused after 1 week of inactivity.',
     cta: 'Get Started',
   },
   {
+    id: 'tier_pro',
     name: 'Pro',
     nameBadge: '',
     costUnit: '/ month',
     href: 'https://supabase.com/dashboard/new/new-project',
-    from: true,
-    priceLabel: 'Starting from',
-    warning: '+ usage',
+    priceLabel: 'From',
+    warning: 'Usage based plan',
     priceMonthly: 25,
     description: 'For production applications with the option to scale.',
     features: [
       'No project pausing',
-      '8GB database & 100GB file storage',
-      '50GB bandwidth',
-      '5GB file uploads',
-      '100,000 monthly active users',
-      '2M Edge Function invocations',
-      '500 concurrent Realtime connections',
-      '5 million Realtime messages',
+      'Daily backups stored for 7 days',
+      '8GB database space included',
+      '100GB file storage included',
+      '50GB bandwidth included',
+      '5GB file uploads included',
+      '100,000 monthly active users included',
+      '2M Edge Function invocations included',
+      '500 concurrent Realtime connections included',
+      '5 million Realtime messages included',
       '7-day log retention',
       'Email support',
-      'Daily backups',
     ],
-    scale: 'Additional fees apply for usage and storage beyond the limits above.',
-    shutdown: '',
+    footer:
+      'Your cost control settings determine if you wish to pay for anything more than the above.',
     preface: 'Everything in the Free plan, plus:',
-    additional: '',
     cta: 'Get Started',
   },
   {
+    id: 'tier_team',
     name: 'Team',
     nameBadge: 'New',
     costUnit: '/ month',
     href: 'https://forms.supabase.com/team',
-    from: true,
-    priceLabel: 'Starting from',
-    warning: '+ usage',
+    priceLabel: 'From',
+    warning: 'Usage based plan',
     priceMonthly: 599,
     description: 'Collaborate with different permissions and access patterns.',
     features: [
-      'Organization member roles (ABAC)',
+      'Additional Organization member roles',
+      'Daily backups stored for 14 days',
       'Standardised Security Questionnaire',
       'SOC2',
       'SSO for Supabase Dashboard',
       'Priority email support & SLAs',
-      '14-day backups',
       '28-day log retention',
     ],
-    scale: 'Additional fees apply for usage and storage beyond the limits above.',
-    shutdown: '',
+    scale: 'Additional fees apply for usage beyond included usage.',
     preface: 'Everything in the Pro plan, plus:',
-    additional: '',
     cta: 'Contact Us',
   },
   {
+    id: 'tier_enterprise',
     name: 'Enterprise',
     href: 'https://forms.supabase.com/enterprise',
     description: 'For large-scale applications managing serious workloads.',
@@ -93,9 +111,8 @@ export const plans = [
     ],
     priceLabel: '',
     priceMonthly: 'Contact us',
-    preface: 'These apply to all projects within the organization:',
-    scale: '',
-    shutdown: '',
+    preface: '',
+    footer: '',
     cta: 'Contact Us',
   },
 ]
